@@ -1,0 +1,7 @@
+{
+  "name": "fayyfepp_version_2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
