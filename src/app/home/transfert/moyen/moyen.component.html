@@ -1,3 +1,18 @@
-<p>
-  moyen works!
-</p>
+<div class="moyen h-100 p-24 bg-light">
+  <!--send to-->
+  <div class="selected-contact">
+    <div>A</div>
+    <ion-label  position="stacked" class="nom">{{contact.nom}}</ion-label>
+    <div>{{contact.numero}}</div>
+  </div>
+  
+  <!-- Moyen de paiement-->
+  <div class="mt-24">Sur quel compte souhaitez vous lui envoyer de l'argent?</div>
+  <div class="moyens-list mt-24 align-column-start-center">
+    <div class="mobile bg-white align-row-start-center" *ngFor="let mobile of mobiles" (click)="selectMoyen(mobile)" >
+      <div class="logo"><img [src]="mobile.logo"></div>
+      <div class="name">{{mobile.name}}</div>
+    </div>
+  </div>
+  
+  </div>

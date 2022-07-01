@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transfert',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransfertPage implements OnInit {
 
-  constructor() { }
+  public page: string;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.page = this.activatedRoute.snapshot.paramMap.get('page');
   }
 
 }
