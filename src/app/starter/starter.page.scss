@@ -1,0 +1,29 @@
+ion-slides{
+    height: calc(100% - 78px);
+  }
+  .slide{
+    font-family: 'DMSans'; 
+    .slide-text{
+      width: 90%;
+      font-size: 20px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #707070;
+    }
+  }
+  .controls{
+    margin: 0 24px 24px  24px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+  }
+  .background{
+    background-image: url('/assets/images/bg.jpeg');
+  }
+  
