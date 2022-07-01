@@ -1,4 +1,5 @@
 ion-content {
+    overflow: hidden;
     --background: #fff url("/assets/covidbg.png") no-repeat center center / cover;
     --background: #296186;
   
@@ -13,13 +14,17 @@ ion-content {
       border: 1px solid #ccc;
       z-index: 999;
     }
+
+   
   }
+
   
-  ion-input {
-    background: #f3f3f3;
-    border-radius: 10px;
-    color: #a6a6a6;
-  }
+  
+//   ion-input {
+//     background: #f3f3f3;
+//     border-radius: 10px;
+//     color: #a6a6a6;
+//   }
   
   .login-section {
     height: 80vh;
@@ -37,11 +42,11 @@ ion-content {
       color: #c6c6c6;
     }
   
-    ion-icon {
-      padding-top: 5px;
-      color: #c6c6c6;
-      font-size: 30px;
-    }
+    // ion-icon {
+    //   padding-top: 5px;
+    //   color: #c6c6c6;
+    //   font-size: 30px;
+    // }
   
     .heading {
       .avatar {

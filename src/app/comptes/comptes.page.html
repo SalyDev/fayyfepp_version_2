@@ -1,9 +1,115 @@
-<ion-header>
+<ion-header class="orange" [translucent]="false">
   <ion-toolbar>
-    <ion-title>comptes</ion-title>
+    <div class="content">
+      <div class="page-title">Connexion de comptes</div>
+      <ion-button fill="clear" color="primary" [routerLink]="'/home'">Terminer</ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <div class="comptes">
+    <div class="section">
+      <div class="title">Paiement mobile</div>
+      <ion-grid >
+        <ion-row>
+          <ion-col size="3" *ngFor="let mobile of mobiles" >
+            <div class="moyen" (click)="addMoyen(mobile)">
+              <!-- <img src='../../assets/images/checked.png' class="checked" *ngIf="isCompteAdded(mobile)"> -->
+              <img [src]="mobile.logo" />
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="section mt-12">
+      <div class="title">Banques</div>
+      <ion-grid >
+        <ion-row>
+          <ion-col size="3" *ngFor="let mobile of banques" >
+            <div class="moyen" (click)="addMoyen(mobile)">
+              <img [src]="mobile.logo"/>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="section mt-12">
+      <div class="title">Cartes bancaires</div>
+      <ion-grid >
+        <ion-row>
+          <ion-col size="3" *ngFor="let mobile of cartes" >
+            <div class="moyen" (click)="addMoyen(mobile)" >
+              <img [src]="mobile.logo"/>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="w-100 align-center"> 
+      <div class="mt-8 my-btn orange" type="button" (click)="showSuccess=false" color="light">Ajouter</div>
+    </div>
+  </div>
 
+  <!-- Compte Link Modal-->
+  <ion-modal class="compte-modal" 
+  [backdropDismiss]= "false"
+  [showBackdrop]="true"
+  [isOpen]="modalOpened">
+    <ng-template>
+      <ion-content>
+        <div class="content">
+          <div class="w-100 ta-right">
+            <ion-icon name="close" color="primary" (click)="this.modalOpened = false"></ion-icon>
+          </div>
+          <div class="header">
+            <img [src]="selectedMoyen.logo"/>
+          </div>
+          <form *ngIf="compteForm" [formGroup]="compteForm">
+            <div class="mon-input">
+              <ion-label position="stacked">Numéro de téléphone</ion-label>
+              <div class="input"> 
+                <ion-icon name="phone-portrait-outline" class="icon-icon" color="tertiary"></ion-icon>
+                <ion-input formControlName="numero" name="numero" placeholder="777086363"></ion-input>
+              </div>
+            </div>
+            <div class="mon-input">
+              <ion-label position="stacked">Code</ion-label>
+              <div class="input">
+                <ion-icon name="key" class="icon-icon" color="tertiary"></ion-icon>
+                <ion-input formControlName="code" name="code" placeholder="****" type="password"> </ion-input>
+              </div>
+            </div>
+            <div class="w-100 align-center">
+              <div class="mt-8 my-btn blue" type="button" (click)="saveCompte()" color="light">
+                Valider
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+   <!-- Soccuess compte linked modal-->
+   <ion-modal class="success-modal" 
+   [showBackdrop]="true"
+   [isOpen]="showSuccess">
+     <ng-template>
+       <ion-content>
+         <div class="content">
+           <div class="header">
+             <img [src]="'assets/images/success.png'"/>
+           </div>
+           <div class="ta-center" >Connexion avec votre compte {{selectedMoyen.name}} réussie</div>
+           <div class="w-100 align-center">
+            <div class="mt-8 my-btn blue" type="button" (click)="showSuccess=false" color="light">
+              Fermer
+            </div>
+          </div>
+         </div>
+       </ion-content>
+     </ng-template>
+   </ion-modal>
 </ion-content>
