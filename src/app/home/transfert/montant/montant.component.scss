@@ -1,0 +1,46 @@
+.montants{
+    height: 100%;
+    overflow-y: auto;
+    .send-to{
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f8c12c;
+      margin-bottom: 8px;
+     .nom{
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000;
+     }
+    }
+    .frais{
+      text-align: center;
+      .text{
+        font-size: 15px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #f8c12c;
+      }
+      .info{
+        font-size: 11px;
+      color: #777878;
+      text-align: center;
+      margin-top: 5px; 
+      }
+    }
+    .actions{
+      width: 100%;
+      ion-button{
+        height: 48px;
+        --padding: 12px;
+        --background-image: linear-gradient(157deg, #208cd6 20%, #043b5d 112%);
+        --border-radius: 20px;
+      }
+    }
+  }

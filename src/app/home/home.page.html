@@ -1,0 +1,106 @@
+<ion-header class="blue" [translucent]="true">
+  <div>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+  </div>
+  <div class="logo">
+    <img src='assets/images/logo.png'>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="home">
+    <!-- solde-->
+    <div class="solde-container">
+      <div class="text">
+        <div class="title">Mon solde disponible</div>
+        <div class="value"> 
+          <span *ngIf="soldeIsVisible">{{solde | number}}</span> 
+          <span *ngIf="!soldeIsVisible"> ******* </span> 
+          <span class="devise">F CFA</span>
+        </div>
+      </div>
+      <ion-icon size="large" name="eye-outline" *ngIf="!soldeIsVisible" (click)="showSolde()"></ion-icon>
+      <ion-icon size="large" name="eye-off-outline"  *ngIf="soldeIsVisible" (click)="hideSolde()"></ion-icon>
+    </div>
+    <div class="ta-right">
+      <ion-button fill="clear" color="dark" (click)="showSoldeDetails()">Voir les details</ion-button>
+    </div>
+
+    <!--paiement tools-->
+    <div class="paytools" *ngIf="user">
+      <div class="align-row-space-between-center">
+        <!--qrcode-->
+        <qrcode *ngIf="qrcodeDatas" [qrdata]="qrcodeDatas" [width]="148" [errorCorrectionLevel]="'Q'" [margin]="'0'"></qrcode>
+        <!--nfc-->
+        <div class="nfc align-column-space-between-center">
+          <div class="logo align-row-start-center">
+            <img src='assets/images/nfc.svg'>
+            <div class="text">NFC</div>
+          </div>
+          <div class="status align-column-start-center">
+            <div class="title">Paiement via NFC</div>
+            <div class="value">{{nfIsActive? 'Activé': 'Désactivé'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="align-row-start-center pl-32">
+        <ion-icon name="camera" ></ion-icon>
+        <div class="ml-8">Scanner</div>
+      </div>
+    </div>
+
+    <!-- home menu-->
+    <div class="items mt-12">
+      <ion-grid >
+        <ion-row>
+          <ion-col size="4" *ngFor="let item of items" >
+            <div class="item align-column-start-center" [routerLink]="item.pageUrl">
+             <div class="logo"><img [src]="item.logo" /></div> 
+             <div class="label">{{item.libelle}}</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!--transactions-->
+    <div class="ts mt-24" *ngIf="transactions && transactions.length > 0">
+      <div class="ta-center" *ngIf="tLoader === true">
+        <img src="assets/images/loading.gif" height="48px">
+      </div>
+     
+      <ion-list lines="none" *ngIf="tLoader === false">
+        <ion-item *ngFor="let trans of transactions">
+          <div  class="w-100 align-column-start-stretch">
+            <div class="align-row-space-between-center">
+              <div class="dest">à {{trans.destinataire}}</div>
+              <div class="dest">{{trans.montant | number}} F</div>
+            </div>
+            <div class="date">{{trans.dateCreation.toDate() | date :'medium'}}</div>
+          </div>
+          
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <!-- details solde Modal-->
+  <ion-modal class="solde-modal" 
+    [breakpoints]="soldeModalBreakpoints"
+    [initialBreakpoint]="'0.5'"
+    [isOpen]="detailsSoldeVisible" #soldeModal>
+    <ng-template>
+      <ion-content>
+        <div class="content">
+         <div class="compte align-row-start-center" *ngFor="let compte of comptes" >
+          <img [src]="getMoyenPaiement(compte.moyen).logo" class="mr-12 w-56-p">
+          <div> {{compte.solde | number}} F CFA</div>
+         </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+</ion-content>

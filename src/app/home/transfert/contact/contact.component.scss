@@ -1,0 +1,52 @@
+.contact{
+    height: 100%;
+    overflow-y: auto;
+  }
+  .form{
+    padding: 18px 0px 0px 0px;
+  }
+  .fav{
+    .title{
+      font-size: 13px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.85;
+      letter-spacing: -0.37px;
+      color: #296086;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f8c12c;
+      margin-bottom: 8px;
+    }
+  }
+  ion-list {
+    border-radius: 12px;
+    adding-bottom: 4px;
+    ion-list-header {
+      font-size: 15px;
+    }
+    ion-item {
+      .nom {
+        font-size: 13px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: -0.37px;
+        color: #296086;
+      }
+      .num {
+        font-size: 9px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.67;
+        letter-spacing: -0.26px;
+        color: #000;
+      }
+    }
+    img {
+      height: 32px;
+    }
+  }
+  

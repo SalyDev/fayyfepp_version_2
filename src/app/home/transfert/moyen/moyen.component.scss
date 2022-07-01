@@ -1,0 +1,38 @@
+.moyen{
+    overflow-y: auto;
+    .selected-contact{
+      color: #666;
+      .nom{
+        color: #000;
+      }
+      border-bottom: 1px solid #f8c12c;
+    }
+    .moyens-list{
+      .mobile{
+        width: 223px;
+        height: 60px;
+        margin: 0 0 36px;
+        padding: 15px 24px;
+        border-radius: 25px;
+        background-color: #fff;
+        .logo{
+          width: 75px;
+          text-align: center;
+          img{
+            max-height: 58px;
+            max-width: 70px;
+          }
+        }
+       .name {
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #4b4a4a;
+       }
+      }
+    }
+  }
