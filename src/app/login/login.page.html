@@ -1,0 +1,61 @@
+<ion-content> 
+  <div class="logo">
+    <img src='assets/images/logo.png'>
+  </div>
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+      <!-- <div class="avatar">
+        <ion-avatar class="ion-text-center">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+      </div> -->
+
+      <h1>Je m'inscris</h1>
+      <p>En mettant mon numéro de téléphone et mon nom</p>
+    </div>
+
+    <div class="login-form ion-padding">
+      <form class="form-input" *ngIf="loginForm" [formGroup]="loginForm">
+        <ion-item lines="none">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-label>Mon numéro de téléphone</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-icon name="phone-portrait-outline" class="icon"></ion-icon>
+              </ion-col>
+              <ion-col size="10">
+                <ion-input formControlName="numero"  type="text" placeholder="+221XXXXXXXXX"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-label>Mon prénom et mon nom</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="2">
+                <ion-icon name="person-outline"></ion-icon>
+              </ion-col>
+              <ion-col size="10">
+                <ion-input formControlName="nom" class="number" type="text"></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </form>
+    </div>
+
+    <div class="action-button ion-padding">
+      <ion-button size="large" class="login-button ion-margin-vertical" (click)="login()">Connectez-vous</ion-button>
+      <ion-button size="large" class="signup-button">Créer un nouveau compte</ion-button>
+    </div>
+  </div>
+</ion-content>

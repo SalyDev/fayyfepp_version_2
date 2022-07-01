@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/internal/operators';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-starter',
@@ -39,18 +41,20 @@ export class StarterPage implements OnInit {
 
   constructor(
     private router: Router,
-
+    private apiService: ApiService
   ) {
     this.unsubscribeAll = new Subject();
    }
 
   ngOnInit() {
+
   }
 
   nextSlide(): void{
     this.slider.isEnd().then((istrue) => {
       if(istrue){
         console.log('show home page');
+       this.passSlides();
       }
       else{
         this.slider.slideNext(300);
@@ -58,5 +62,7 @@ export class StarterPage implements OnInit {
     });
   }
 
-
+  passSlides(): void{
+this.router.navigateByUrl('login');
+  }
 }
