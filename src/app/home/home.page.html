@@ -29,14 +29,15 @@
     </div>
 
     <!--paiement tools-->
-    <div class="paytools" *ngIf="user">
+    <div class="paytools" *ngIf="!user">
       <div class="align-row-space-between-center">
         <!--qrcode-->
-        <qrcode *ngIf="qrcodeDatas" [qrdata]="qrcodeDatas" [width]="148" [errorCorrectionLevel]="'Q'" [margin]="'0'"></qrcode>
+      
+        <qrcode   [margin]="'0'" [qrdata]="'Votre chaîne de caractère QR code'" [width]="148"></qrcode>
         <!--nfc-->
         <div class="nfc align-column-space-between-center">
           <div class="logo align-row-start-center">
-            <img src='assets/images/nfc.svg'>
+            <img src='../../assets/images/nfc.svg'>
             <div class="text">NFC</div>
           </div>
           <div class="status align-column-start-center">

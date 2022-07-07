@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
-
 import { Router } from '@angular/router';
 
 
@@ -26,11 +25,32 @@ export class ApiService {
     private router: Router,
     private httpClient: HttpClient,
   ) {
+    this.getUser();
 
     this.onComptesChanged = new BehaviorSubject([]);
     this.onTransactionsChanged = new BehaviorSubject([]);
     this.onContactChanged = new BehaviorSubject(null);
     this.onMoyenChanged = new BehaviorSubject(null);
+  }
+
+  public getUser(): void{
+    const currentClient = localStorage.getItem('client');
+    if (currentClient) {
+      this.user = JSON.parse(currentClient);
+      this.onUserChanged = new BehaviorSubject(this.user);
+      // this.getComptes();
+    }
+    else {
+      this.user = null;
+      this.onUserChanged = new BehaviorSubject(null);
+    }
+    this.user = {
+      uid: 'ZfAwWfuIPhI5bCjTTibJ',
+      nomComplet: 'Khady DIOP',
+      pays: 'SN',
+      telephone: '+221773242452'
+    };
+    this.onUserChanged.next(this.user);
   }
 
 
@@ -42,43 +62,4 @@ export class ApiService {
     this.router.navigate(['login']);
   }
 
-  // public addCompte(account): Promise<any>{
-  //   return new Promise((resolve, reject) => {
-  //     account.client = this.user.uid;
-  //     //resolve(true);
-  //     this.httpClient.post(environment.apiUrl + 'comptes/', account)
-  //       .subscribe((response: any) => {
-  //         if (response) {
-  //           this.comptes.push(response);
-  //           this.onComptesChanged.next(this.comptes);
-  //           resolve(response);
-  //         }
-  //         else{
-  //           reject(null);
-  //         }
-  //       }, error => {
-  //         reject(error);
-  //       });
-  //   });
-  // }
-
-
-
-  // public doTransfert(transfert): Promise<any>{
-  //   return new Promise((resolve, reject) => {
-  //     transfert.client = this.user.uid;
-  //     //resolve(true);
-  //     this.httpClient.post(environment.apiUrl + 'transferts/', transfert)
-  //       .subscribe((response: any) => {
-  //         if (response) {
-  //           resolve(response);
-  //         }
-  //         else{
-  //           reject(null);
-  //         }
-  //       }, error => {
-  //         reject(error);
-  //       });
-  //   });
-  // }
 }
