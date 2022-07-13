@@ -30,6 +30,26 @@ const routes: Routes = [
     path: 'comptes',
     loadChildren: () => import('./comptes/comptes.module').then( m => m.ComptesPageModule)
 
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
+  },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+  {
+    path: 'verification-otp',
+    loadChildren: () => import('./verification-otp/verification-otp.module').then( m => m.VerificationOtpPageModule)
+  },
+  {
+    path: 'code-pin',
+    loadChildren: () => import('./code-pin/code-pin.module').then( m => m.CodePinPageModule)
+  },
+  {
+    path: 'confirmation-code-pin',
+    loadChildren: () => import('./confirmation-code-pin/confirmation-code-pin.module').then( m => m.ConfirmationCodePinPageModule)
   }
 ];
 @NgModule({

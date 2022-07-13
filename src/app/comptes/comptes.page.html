@@ -13,10 +13,10 @@
       <div class="title">Paiement mobile</div>
       <ion-grid >
         <ion-row>
-          <ion-col size="3" *ngFor="let mobile of mobiles" >
+          <ion-col  size="3" *ngFor="let mobile of mobiles" >
             <div class="moyen" (click)="addMoyen(mobile)">
-              <!-- <img src='../../assets/images/checked.png' class="checked" *ngIf="isCompteAdded(mobile)"> -->
-              <img [src]="mobile.logo" />
+              <img src='../../assets/images/checked.png' class="checked" *ngIf="isCompteAdded(mobile)">
+              <img [src]="mobile.logo"  alt=""/>
             </div>
           </ion-col>
         </ion-row>
@@ -69,15 +69,15 @@
             <div class="mon-input">
               <ion-label position="stacked">Numéro de téléphone</ion-label>
               <div class="input"> 
-                <ion-icon name="phone-portrait-outline" class="icon-icon" color="tertiary"></ion-icon>
-                <ion-input formControlName="numero" name="numero" placeholder="777086363"></ion-input>
+                <ion-icon name="phone-portrait-outline" class="icon-icon" color="tertiary" ></ion-icon>
+                <ion-input formControlName="numero" name="numero"></ion-input>
               </div>
             </div>
             <div class="mon-input">
-              <ion-label position="stacked">Code</ion-label>
+              <ion-label position="stacked">Montant</ion-label>
               <div class="input">
                 <ion-icon name="key" class="icon-icon" color="tertiary"></ion-icon>
-                <ion-input formControlName="code" name="code" placeholder="****" type="password"> </ion-input>
+                <ion-input formControlName="montant" name="montant"  type="text"> </ion-input>
               </div>
             </div>
             <div class="w-100 align-center">

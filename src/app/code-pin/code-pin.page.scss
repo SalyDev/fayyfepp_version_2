@@ -1,0 +1,103 @@
+ion-content {
+    overflow: hidden;
+    --background: #fff url("/assets/covidbg.png") no-repeat center center / cover;
+    --background: #296186;
+  
+    .logo{
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      height: 64px;
+      width: 64px;
+      top: 100px;
+      left: calc(50% - 32px);
+      border: 1px solid #ccc;
+      z-index: 999;
+    }
+
+   
+  }
+
+  
+  
+//   ion-input {
+//     background: #f3f3f3;
+//     border-radius: 10px;
+//     color: #a6a6a6;
+//   }
+  
+  .login-section {
+    height: 80vh;
+    width: 100%;
+    background: #fff;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    margin: auto;
+    border-top-left-radius: 46px;
+    border-top-right-radius: 46px;
+  
+    ion-label {
+      color: #c6c6c6;
+    }
+  
+    // ion-icon {
+    //   padding-top: 5px;
+    //   color: #c6c6c6;
+    //   font-size: 30px;
+    // }
+  
+    .heading {
+      .avatar {
+        display: flex;
+        justify-content: center;
+      }
+  
+      h1 {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+  
+      p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem;
+        color: grey;
+      }
+    }
+  
+    .action-button {
+      margin-top: 10px;
+      text-align: center;
+  
+      .login-button {
+        --border-radius: 20px;
+        --background: #facf5e;
+        color: #000;
+        font-size: 15px;
+        width: 100%;
+        font-weight: bold;
+      }
+  
+      .signup-button {
+        --border-radius: 20px;
+        --background: #c6c6c6;
+        font-size: 15px;
+        color: #000;
+        width: 100%;
+        font-weight: bold;
+      }
+    }
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+  }
+  
+  .icon-mn {
+    --color: #ffffff;
+  }
+  

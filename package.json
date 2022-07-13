@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "mock:server": "json-server --watch mocks/data.json"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@capacitor/status-bar": "1.0.8",
     "@ionic/angular": "^6.1.9",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.20",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

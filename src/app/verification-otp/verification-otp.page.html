@@ -1,0 +1,102 @@
+<!-- <ion-header class="ion-no-border"> -->
+  <!-- <ion-toolbar class="transparent-toolbar"> -->
+    <!-- Code de vérification -->
+    <!-- <ion-title> -->
+      <!-- Code -->
+      <!-- <ion-item lines="none">
+        <ion-label class="text-center fredoka-font"
+          >Réinitialisation de mot de passe</ion-label
+        >
+      </ion-item>  -->
+    <!-- </ion-title> -->
+  <!-- </ion-toolbar> -->
+<!-- </ion-header> -->
+
+<ion-content>
+  <!-- debut: section image -->
+  <div class="d-flex justify-content-center mb-25 mt-5">
+    <div style="height: 50%; width: 100%">
+      <img src="../../assets/images/illustrations/accept_terms.svg" height="100%" width="100%" alt="">
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-center h1 fredoka-font mb-3">
+    Entrer le code reçu
+  </div>
+  <!-- fin: section image -->
+
+  <!-- debut: formulaire -->
+  <div class="d-flex justify-content-center w-100">
+    <!-- debut form -->
+    <form style="width: 95%" [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+      <ion-item lines="none">
+        <!-- <ion-label position="floating">
+        <ion-icon name="call-outline"></ion-icon>
+      </ion-label> -->
+        <input
+          class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+          type="text"
+          id="first"
+          maxlength="1"
+          formControlName="c1"
+        />
+        <input
+          class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+          type="text"
+          id="first"
+          maxlength="1"
+          formControlName="c2"
+        />
+        <input
+          class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+          type="text"
+          id="first"
+          maxlength="1"
+          formControlName="c3"
+        />
+        <input
+          class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+          type="text"
+          id="first"
+          maxlength="1"
+          formControlName="c4"
+        />
+      </ion-item>
+      <div
+        class="
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+          mt-15
+        "
+      >
+        <button
+          type="submit"
+          class="btn btn-primary btn-pill h3"
+          style="width: 25%"
+        >
+          <ion-icon class="icon-white" name="arrow-forward-outline"></ion-icon>
+        </button>
+        <div
+        routerLink="/inscription"
+        class="h5 mt-3 text-center"
+        style="width: 90%"
+      >
+        <!-- <span>Code non reçu?</span> -->
+        <ion-text color="primary"> Changer le numéro</ion-text>
+      </div>
+        <div
+          class="h5 mt-3 text-center"
+          style="width: 90%"
+          (click)="resendCode()"
+        >
+          <span>Code non reçu?</span>
+          <ion-text color="primary"> Renvoyer</ion-text>
+        </div>
+      </div>
+    </form>
+    <!-- fin form -->
+  </div>
+  <!-- fin: formulaire -->
+</ion-content>
