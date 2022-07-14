@@ -52,7 +52,27 @@ export class VerificationOtpPage implements OnInit {
     const code = this.otpForm.controls.c1.value + this.otpForm.controls.c2.value + this.otpForm.controls.c3.value + this.otpForm.controls.c4.value;
     console.log(code);
     console.log(this.pinId);
-    this.router.navigate(['/code-pin'], { state: { telephone: "789878767" } })
+    if(this.otpForm.valid){
+      // this.router.navigate(['/code-pin'], { state: { telephone: "789878767" } })
+      this.sendCodeService.verifyCode(this.pinId, code).subscribe(
+        (data:any)=>{
+          console.log(data)
+          // si le code est bon 
+          if(data.verified){
+            this.utilService.showSuccessToast("middle","Code vérifié");
+            // on le redirige pour fixer son code PIN
+            this.router.navigate(['/code-pin'], { state: { telephone: this.telephone } })
+  
+          }else{
+            // si c un mauvais code otp
+            this.utilService.showErrorToast("bottom","Mauvais code");
+          }
+        },
+        (error)=>{
+          console.log(error)
+        }
+      )
+    }
 
     // this.sendCodeService.verifyCode("c8dcd048-5e7f-4347-8c89-4470c3af0b", code).subscribe(
     // this.sendCodeService.verifyCode(this.pinId, code).subscribe(
@@ -60,13 +80,13 @@ export class VerificationOtpPage implements OnInit {
     //     console.log(data)
     //     // si le code est bon 
     //     if(data.verified==true){
-    //       this.utilService.showSuccessToast("Code vérifié");
+    //       this.utilService.showSuccessToast("middle","Code vérifié");
     //       // on le redirige pour fixer son code PIN
     //       this.router.navigate(['/code-pin'], { state: { telephone: this.telephone } })
 
     //     }else{
     //       // si c un mauvais code otp
-    //       this.utilService.showErrorToast("Mauvais code");
+    //       this.utilService.showErrorToast("middle","Mauvais code");
     //     }
     //   },
     //   (error)=>{
@@ -77,9 +97,12 @@ export class VerificationOtpPage implements OnInit {
 
   resendCode()
   {
-    this.sendCodeService.sendOTP(this.router.getCurrentNavigation().extras.state.telephone).subscribe(
+    console.log(this.telephone);
+    this.sendCodeService.sendOTP("221"+this.telephone).subscribe(
       (data)=>{
         console.log(data)
+        this.utilService.showSuccessToast("bottom", "Code renvoyé");
+
       },
       (error)=>{
         console.log(error)

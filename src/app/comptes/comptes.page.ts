@@ -18,7 +18,9 @@ export class ComptesPage implements OnInit {
 
   comptes: any[] = [];
 
-  mobiles = [{"nom":"OM", "number": 1, "logo": "assets/images/mobile-money/OM2X.png"}]
+  mobiles: any[];
+
+  // mobiles = [{"nom":"OM", "number": 1, "logo": "assets/images/mobile-money/OM2X.png"}]
   constructor(
     private _formBuilder: FormBuilder,
     private utilService: UtilService,
@@ -61,8 +63,20 @@ export class ComptesPage implements OnInit {
    // }
   }
 
-  isCompteAdded(){
-
+  isCompteAdded(moyen): boolean{
+    this.utilService.onComptesChanged.subscribe(
+      (data)=>{
+        this.comptes = data;
+        // console.log(data);
+      },
+      (error)=>console.log(error)
+    )
+    if(this.comptes && this.comptes.length > 0){
+      return this.comptes.find((c:any) => c.moyen === moyen.id);
+    }
+    else{
+      return false;
+    }
   }
   
 
@@ -98,9 +112,8 @@ export class ComptesPage implements OnInit {
       });
     })
     .catch((error)=>{
-
+      console.log(error)
     })
-    
   }
 
   

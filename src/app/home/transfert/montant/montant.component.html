@@ -1,3 +1,74 @@
-<p>
-  montant works!
-</p>
+<div class="montants h-100 p-24 bg-light align-column-start-stretch">
+  <!--send to-->
+  <div class="send-to align-row-space-between-center">
+    <div class="align-column-start-center">
+      <div class="nom">nom</div>
+      <div>78 170 06T 47</div>
+    </div>
+    <img src='assets/images/Orange-Money.png' height="32px" style="max-width: 200px;">
+  </div>
+
+  <div class="mt-24 align-column-space-between-stretch" style=" flex: 1;">
+    <!--montant envoye-->
+    <div class="form mt-24">
+      <div class="ta-center mb-12">
+        <ion-label color="primary">Transfert</ion-label>
+      </div>
+      <div class="mon-input no-icon">
+        <ion-label color="primary" position="stacked">Montant Envoyé</ion-label>
+        <div class="input">
+          <ion-input [formControl]="montantEnvoyeControl" name="montantEnvoye" type="number"></ion-input>
+        </div>
+      </div>
+      <ion-label class="mb-24" color="danger" *ngIf="erreur">{{erreur}}</ion-label>
+
+      <div class="mon-input no-icon mt-12">
+        <ion-label color="primary" position="stacked">Montant Reçu</ion-label>
+        <div class="input">
+          <ion-input [formControl]="montantRecuControl" name="montantRecu" type="number"></ion-input>
+        </div>
+      </div>
+
+      <!-- frais-->
+      <div class="mt-24 frais align-column-center-center">
+        <div class="text"> Frais
+          <span *ngIf="interoperable === true"> d'interopérabilité <img src="assets/images/equal.png" height="12px"
+              class="ml-4 mr-4"> <span *ngIf="fraisPercent">{{fraisPercent}} %</span></span>
+          <span *ngIf="interoperable === false"> {{moyen.name}} = {{moyen.frais}} %</span>
+        </div>
+        <div class="info" *ngIf="montantDispatche > 0">
+          Un montant total de {{montantDispatche | number}} f CFA sera prélevé de vos autres comptes pour completer le
+          montant à envoyer
+        </div>
+      </div>
+    </div>
+
+    <div class="actions align-row-center-center">
+      <ion-button class="w-100 " [disabled]="!isValid" color="primary" (click)="doTransfert()">Envoyer</ion-button>
+      <!-- <div class="mt-12 my-btn blue " color="light"> Envoyer </div> -->
+    </div>
+  </div>
+
+</div>
+
+
+   <!-- Soccuess compte linked modal-->
+   <ion-modal class="success-modal" 
+   [showBackdrop]="true"
+   [isOpen]="showSuccess">
+     <ng-template>
+       <ion-content>
+          <div class="content">
+            <div class="header">
+              <img [src]="'assets/images/success.png'"/>
+            </div>
+           <div class="ta-center">Votre transfert a réussie !</div>
+           <div class="w-100 align-center">
+            <div class="mt-8 my-btn blue" type="button" (click)="goToHomePage()" color="light">
+              Fermer
+            </div>
+          </div>
+         </div>
+       </ion-content>
+     </ng-template>
+   </ion-modal>

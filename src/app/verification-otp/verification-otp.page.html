@@ -39,6 +39,7 @@
           id="first"
           maxlength="1"
           formControlName="c1"
+          [ngStyle]="{'border-bottom': otpForm.controls['c1'].invalid  ? '2px solid red' : ''}"
         />
         <input
           class="shadow-custom-1 w-small text-center form-control rounded mr-2"
@@ -46,6 +47,7 @@
           id="first"
           maxlength="1"
           formControlName="c2"
+          [ngStyle]="{'border-bottom': otpForm.controls['c2'].invalid  ? '2px solid red' : ''}"
         />
         <input
           class="shadow-custom-1 w-small text-center form-control rounded mr-2"
@@ -53,6 +55,8 @@
           id="first"
           maxlength="1"
           formControlName="c3"
+          [ngStyle]="{'border-bottom': otpForm.controls['c3'].invalid  ? '2px solid red' : ''}"
+
         />
         <input
           class="shadow-custom-1 w-small text-center form-control rounded mr-2"
@@ -60,6 +64,7 @@
           id="first"
           maxlength="1"
           formControlName="c4"
+          [ngStyle]="{'border-bottom': otpForm.controls['c4'].invalid  ? '2px solid red' : ''}"
         />
       </ion-item>
       <div
@@ -73,6 +78,7 @@
       >
         <button
           type="submit"
+          [disabled]="!otpForm.valid"
           class="btn btn-primary btn-pill h3"
           style="width: 25%"
         >

@@ -1,3 +1,85 @@
-<p>
-  contact works!
-</p>
+
+ 
+
+<div class="contact p-24 bg-light">
+  <!-- form-->
+  <div class="form">
+    <!-- input-->
+    <div class="mon-input no-icon">
+      <ion-label color="primary" position="stacked">Numéro de téléphone</ion-label>
+      <div class="input"> 
+         <!-- todo search in contacts autocomplete -->
+        <ion-input [formControl]="contactControl" name="*numero" placeholder="777086363"></ion-input>
+      </div>
+    </div>
+    <!-- add new button-->
+    <div class="align-row-start-center" (click)="addContact()">
+      <ion-icon  size="large" color="primary" name="add-circle"></ion-icon>
+      <div  class="ml-4 fs-14">Envoyer vers un nouveau numéro</div>
+    </div>
+    <!--filtered contacts-->
+    <ion-list *ngIf="contactListFiltered && contactListFiltered.length > 0" class="pt-12">
+      <ion-item *ngFor="let fav of contactListFiltered" (click)="selectContact(fav)" class="align-row-start-center">
+        <img src="assets/images/avatar.png" height="32px">
+        <div class="ml-8 align-column-start-start">
+          <div class="nom">{{fav.nom}}</div>
+          <div class="num">{{fav.numero}}</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+    
+  <!-- favoris-->
+  <div class="fav mt-12">
+    <div class="title">
+      Favoris
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let fav of favoris" (click)="selectContact(fav)" class="align-row-start-center">
+        <img src="assets/images/avatar.png">
+        <div class="ml-8 align-column-start-start">
+          <div class="nom">{{fav.nom}}</div>
+          <div class="num">{{fav.numero}}</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <ion-modal class="compte-modal" 
+  [backdropDismiss]= "false"
+  [showBackdrop]="true"
+  [isOpen]="modalOpened">
+    <ng-template>
+      <ion-content>
+        <div class="content">
+          <div class="header">
+            <img [src]="selectedMoyen.logo"/>
+          </div>
+          <form [formGroup]="compteForm">
+            <div class="mon-input">
+              <ion-label position="stacked">Nom Complet</ion-label>
+              <div class="input">
+                <ion-icon  class="icon-icon" color="tertiary"></ion-icon>
+                <ion-input formControlName="code" name="code" placeholder="Marieme sembene"> </ion-input>
+              </div>
+            </div>
+            <div class="mon-input">
+              <ion-label position="stacked">Numéro de téléphone</ion-label>
+              <div class="input"> 
+                <ion-icon name="phone-portrait-outline" class="icon-icon" color="tertiary"></ion-icon>
+                <ion-input formControlName="numero" name="numero" placeholder="777086363"></ion-input>
+              </div>
+            </div>
+            <div class="w-100 align-center">
+              <div class="mt-8 my-btn blue" type="button" (click)="saveCompte()" color="light">
+                Valider
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</div>

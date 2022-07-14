@@ -23,6 +23,7 @@ export class ConfirmationCodePinPage implements OnInit {
     ) { 
       if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.telephone){
         //
+        this.telephone = this.router.getCurrentNavigation().extras.state.telephone;
         console.log(this.router.getCurrentNavigation().extras.state.telephone);
       }
       if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.pin){
@@ -55,33 +56,32 @@ export class ConfirmationCodePinPage implements OnInit {
 
   onSubmit()
   {
-    // console.log("submit");
-    // this.ngOnInit();
     const confirmPin = this.pinForm.controls.c1.value + this.pinForm.controls.c2.value + this.pinForm.controls.c3.value + this.pinForm.controls.c4.value + this.pinForm.controls.c5.value + this.pinForm.controls.c6.value;
-
-    if(confirmPin==this.pin)
-    {
-      // codes pin identiques
-      this.utilService.showSuccessToast("Code PIN confirmé")
-
-      // on redirige l'utilisateur vers l'accueil ( ou la connexion)
-      this.router.navigate(['/home'], { state: { telephone : this.telephone } });
-
-      console.log(this.telephone);
-      console.log(confirmPin);
-      // on enregistre l'utilisateur dans la base de données
-      this.userService.createUser(this.telephone, confirmPin).subscribe(
-        (data)=>{
-          console.log(data)
-        },
-        (error)=>{console.log(error)}
-      )
-
-
-      
-    }else{
-      this.utilService.showErrorToast("Codes PIN non identiques");
+    if(this.pinForm.valid){
+      if(confirmPin==this.pin)
+      {
+        // codes pin identiques
+        this.utilService.showSuccessToast("bottom","Code PIN confirmé")
+  
+        // on redirige l'utilisateur vers l'accueil ( ou la connexion)
+        this.router.navigate(['/home'], { state: { telephone : this.telephone } });
+  
+        console.log(this.telephone);
+        console.log(confirmPin);
+        // return;
+        // on enregistre l'utilisateur dans la base de données
+        this.userService.createUser(this.telephone, confirmPin).subscribe(
+          (data)=>{
+            console.log(data)
+          },
+          (error)=>{console.log(error)}
+        )
+      }
+      else{
+        this.utilService.showErrorToast("bottom","Codes PIN non identiques");
+      }
     }
+   
 
     // this.router.navigate(['/code-pin'], { state: { telephone : this.telephone, subTitle : "Confirmer votre code PIN" } });
   }

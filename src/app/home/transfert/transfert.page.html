@@ -1,9 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>transfert</ion-title>
-  </ion-toolbar>
+<ion-header class="blue" [translucent]="true">
+  <div class="align-row-start-center">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" style="--icon-margin-end:8px; --icon-padding-start:6px"
+          text=" Envoyer de l'argent"
+          icon="arrow-back">
+      </ion-back-button>
+    </ion-buttons>
+  </div>
+  <div class="logo">
+    <img src='../assets/images/logo.png'>
+  </div>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="page === 'contact'">
+    <app-transfert-contact></app-transfert-contact>
+  </ng-container>
 
+  <ng-container *ngIf="page === 'moyen'">
+    <app-transfert-moyen></app-transfert-moyen>
+  </ng-container>
+
+  <ng-container *ngIf="page === 'montant'">
+    <app-transfert-montant></app-transfert-montant>
+  </ng-container>
 </ion-content>

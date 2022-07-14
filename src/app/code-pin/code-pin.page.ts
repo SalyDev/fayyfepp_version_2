@@ -18,6 +18,7 @@ export class CodePinPage implements OnInit {
     ) { 
       if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.telephone){
         //
+        this.telephone = this.router.getCurrentNavigation().extras.state.telephone;
         console.log(this.router.getCurrentNavigation().extras.state.telephone);
       }
       // if(this.router.getCurrentNavigation().extras.state.subTitle){
@@ -47,9 +48,13 @@ export class CodePinPage implements OnInit {
   {
     // console.log("submit");
     // this.ngOnInit();
-    const pin = this.pinForm.controls.c1.value + this.pinForm.controls.c2.value + this.pinForm.controls.c3.value + this.pinForm.controls.c4.value + this.pinForm.controls.c5.value + this.pinForm.controls.c6.value;
+    if(this.pinForm.valid){
+      const pin = this.pinForm.controls.c1.value + this.pinForm.controls.c2.value + this.pinForm.controls.c3.value + this.pinForm.controls.c4.value + this.pinForm.controls.c5.value + this.pinForm.controls.c6.value;
     
-    this.router.navigate(['/confirmation-code-pin'], { state: { telephone : this.telephone, pin: pin } });
+      this.router.navigate(['/confirmation-code-pin'], { state: { telephone : this.telephone, pin: pin } });
+    }
+
+    
   }
 
 }

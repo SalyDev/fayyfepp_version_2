@@ -22,7 +22,7 @@ export class SendCodeService {
      "pin_time_to_live" :  5,
      "pin_length" : 4,
      "pin_placeholder" : "< 1234 >",
-     "message_text" : "Bienvenue sur Fayy Fepp. Votre code verification est : < 1234 >. Sa durée de validation est de 5 minutes",
+     "message_text" : "Bienvenue sur Fayy Fepp. Votre code de verification est : < 1234 >. Sa durée de validation est de 5 minutes",
      "pin_type" : "NUMERIC"
     }
 

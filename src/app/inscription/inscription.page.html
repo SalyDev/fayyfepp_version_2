@@ -45,7 +45,7 @@
           <ion-icon name="call-outline"></ion-icon>
           Téléphone
         </ion-label>
-        <ion-input formControlName="telephone"></ion-input>
+        <ion-input formControlName="telephone"  pattern="^(77|76|75|78|70)[0-9]{7}$"></ion-input>
       </ion-item>
       <!-- <ion-item>
       <ion-label position="floating">
@@ -70,6 +70,7 @@
           class="btn btn-primary btn-pill h3 mt-6"
           style="width: 90%"
           type="submit"
+          [disabled]="!signupForm.valid"
         >
           Suivant
           <ion-icon class="icon-white" name="arrow-forward-outline"></ion-icon>
@@ -79,7 +80,7 @@
           style="width: 90%"
         >
           <span>Déjà membre?</span>
-          <ion-text color="primary"> Se connecter</ion-text>
+          <ion-text color="primary" routerLink="/login"> Se connecter</ion-text>
         </div>
       </div>
       <!-- <p class="d-flex justify-content-end mt-2 mr-3">Mot de passe oublié</p> -->

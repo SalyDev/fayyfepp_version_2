@@ -17,6 +17,6 @@ export class UserService {
       "password": pin
     }
 
-    return this.http.post<any>(environment.backUrl+"/api/users", body);
+    return this.http.post<any>(environment.backUrl+"api/users", body);
   }
 }
