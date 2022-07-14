@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpResponse, Htt
 import { from, Observable, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class TokenInterceptorService  {
 
-  constructor(private storage: Storage) {}
+  constructor(private storage: Storage,private router: Router) {}
 
 intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -22,6 +23,7 @@ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<an
             if (token !==null) {
                 request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
             }
+            else{( this.router.navigate(['login']));}
 
             return next.handle(request).pipe(
                 map((event: HttpEvent<any>) => {

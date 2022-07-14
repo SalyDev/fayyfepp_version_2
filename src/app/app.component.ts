@@ -20,6 +20,7 @@ export class AppComponent implements  OnInit {
   ];
 
   constructor(
+    private router:  Router
 
   ) {
   }
@@ -28,6 +29,12 @@ export class AppComponent implements  OnInit {
 
 
   }
+// eslint-disable-next-line @typescript-eslint/naming-convention
+LogOut(){
+  localStorage.removeItem('token');
 
+  this.router.navigate(['login']);
+
+}
 
 }
