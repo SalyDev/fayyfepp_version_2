@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './authguard.service';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'login',
     pathMatch: 'full'
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
     path: 'starter',
@@ -21,10 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'comptes',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./comptes/comptes.module').then( m => m.ComptesPageModule)
   },
 
