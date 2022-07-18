@@ -1,16 +1,14 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
   mockUrl: "http://localhost:3000/",
   backUrl: "https://127.0.0.1:8000/",
   termii_api_key: "TLAQiPOeBnzSRbPUl7nleg77GdDBKF1pYLzbbmAk8tV9GAfwE09mLKEvmaYagl",
-  termii_channel_id: "FayyFepp22",
+  termii_channel_id: "FayyFepp",
   
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

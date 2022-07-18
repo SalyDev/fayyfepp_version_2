@@ -10,11 +10,13 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // créer un user
-  createUser(telephone: string, pin: string)
+  createUser(telephone: string, pin: string, prenom: string, nom: string)
   {
     const body = {
       "telephone": telephone,
-      "password": pin
+      "password": pin,
+      "prenom": prenom,
+      "nom": nom
     }
 
     return this.http.post<any>(environment.backUrl+"api/users", body);

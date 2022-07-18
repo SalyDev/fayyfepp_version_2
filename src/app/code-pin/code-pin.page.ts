@@ -12,6 +12,8 @@ export class CodePinPage implements OnInit {
   pinForm: FormGroup;
   subTitle: string;
   telephone: string;
+  prenom: string;
+  nom: string;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router
@@ -20,6 +22,14 @@ export class CodePinPage implements OnInit {
         //
         this.telephone = this.router.getCurrentNavigation().extras.state.telephone;
         console.log(this.router.getCurrentNavigation().extras.state.telephone);
+      }
+      if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.prenom){
+        //
+        this.prenom = this.router.getCurrentNavigation().extras.state.prenom;
+      }
+      if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.nom){
+        //
+        this.nom = this.router.getCurrentNavigation().extras.state.nom;
       }
       // if(this.router.getCurrentNavigation().extras.state.subTitle){
       //   //
@@ -51,7 +61,7 @@ export class CodePinPage implements OnInit {
     if(this.pinForm.valid){
       const pin = this.pinForm.controls.c1.value + this.pinForm.controls.c2.value + this.pinForm.controls.c3.value + this.pinForm.controls.c4.value + this.pinForm.controls.c5.value + this.pinForm.controls.c6.value;
     
-      this.router.navigate(['/confirmation-code-pin'], { state: { telephone : this.telephone, pin: pin } });
+      this.router.navigate(['/confirmation-code-pin'], { state: { telephone : this.telephone, pin: pin, prenom: this.prenom, nom: this.nom } });
     }
 
     

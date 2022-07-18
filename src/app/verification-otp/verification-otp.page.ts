@@ -14,6 +14,8 @@ export class VerificationOtpPage implements OnInit {
   otpForm: FormGroup;
   pinId: string;
   telephone: string;
+  prenom: string; 
+  nom: string;
 
   constructor(private router: Router, 
     private formBuilder: FormBuilder,
@@ -28,6 +30,14 @@ export class VerificationOtpPage implements OnInit {
     }
     if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.telephone){
       this.telephone = this.router.getCurrentNavigation().extras.state.telephone;
+    }
+    if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.prenom){
+      //
+      this.prenom = this.router.getCurrentNavigation().extras.state.prenom;
+    }
+    if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.nom){
+      //
+      this.nom = this.router.getCurrentNavigation().extras.state.nom;
     }
 
   }
@@ -61,7 +71,7 @@ export class VerificationOtpPage implements OnInit {
           if(data.verified){
             this.utilService.showSuccessToast("middle","Code vérifié");
             // on le redirige pour fixer son code PIN
-            this.router.navigate(['/code-pin'], { state: { telephone: this.telephone } })
+            this.router.navigate(['/code-pin'], { state: { telephone: this.telephone, prenom: this.prenom, nom: this.nom } })
   
           }else{
             // si c un mauvais code otp

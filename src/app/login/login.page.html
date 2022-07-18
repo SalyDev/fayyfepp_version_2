@@ -1,4 +1,5 @@
 <ion-content> 
+  
   <div class="logo">
     <img src='assets/images/logo.png'>
   </div>
@@ -11,28 +12,29 @@
     </div>
 
     <div class="login-form ion-padding">
-      <form class="form-input" *ngIf="loginForm" [formGroup]="loginForm">
+      <form  #f="ngForm" class="form-input" >
         <ion-item class="mb-9">
           <ion-label position="floating">
             <ion-icon name="call-outline"></ion-icon>
             Téléphone
           </ion-label>
-          <ion-input formControlName="numero"></ion-input>
+          <ion-input [(ngModel)]="registerUserData.telephone"  name="telephone" ></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">
             <ion-icon name="person-outline"></ion-icon>
-            Prénom et Nom
+            Code Pin
           </ion-label>
-          <ion-input formControlName="nom"></ion-input>
+          <ion-input [(ngModel)]="registerUserData.password"  name="password"></ion-input>
         </ion-item>
         
       </form>
     </div>
 
     <div class="action-button ion-padding">
-      <ion-button size="large" class="login-button ion-margin-vertical" (click)="login()">Connectez-vous</ion-button>
-      <ion-button size="large" class="signup-button" routerLink="/inscription">Créer un nouveau compte</ion-button>
+      <ion-button size="large" class="login-button ion-margin-vertical" (click)="registerUser()">Connectez-vous</ion-button>
+      <ion-button size="large" class="signup-button" routerLink="/inscription-nom">Créer un nouveau compte</ion-button>
     </div>
   </div>
+
 </ion-content>
