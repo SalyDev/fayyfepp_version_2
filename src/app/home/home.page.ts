@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/internal/operators';
 import { ApiService } from '../api.service';
 import { AppUtils } from '../app.utils';
+import { UserService } from '../_helpers/user.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomePage implements OnInit {
   user: any;
   qrcodeDatas: any;
   comptes: any[] = [];
-  solde = 0;
+  solde = this.userService.solde;
   soldeIsVisible = true;
   detailsSoldeVisible = false;
   soldeModalBreakpoints: any = [0, 0.3, 0.5, 0.8];
@@ -70,7 +71,8 @@ export class HomePage implements OnInit {
   constructor(
     private router: Router,
     private menu: MenuController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private userService: UserService
   ) {
     this.unsubscribeAll = new Subject();
    }

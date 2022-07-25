@@ -5,6 +5,7 @@ export const environment = {
   production: false,
   mockUrl: "http://localhost:3000/",
   backUrl: "https://127.0.0.1:8000/",
+  // backUrl: "https://fayyfepptest.herokuapp.com/",
   termii_api_key: "TLAQiPOeBnzSRbPUl7nleg77GdDBKF1pYLzbbmAk8tV9GAfwE09mLKEvmaYagl",
   termii_channel_id: "FayyFepp",
   
