@@ -35,8 +35,8 @@ export class MoyenComponent implements OnInit {
   }
 
   selectMoyen(moyen): void{
-    this.apiService.onMoyenChanged.next(moyen);
-    this.router.navigateByUrl('/home/transfert/montant');
+    // this.apiService.onMoyenChanged.next(moyen);
+    // this.router.navigateByUrl('/home/transfert/montant');
   }
 
 }

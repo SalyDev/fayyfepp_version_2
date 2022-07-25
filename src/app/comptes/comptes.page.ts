@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { UserService } from '../_helpers/user.service';
 import { UtilService } from '../_helpers/util.service';
+import { Storage } from '@ionic/storage-angular';
+import { CompteService } from '../_helpers/compte.service';
+
 
 @Component({
   selector: 'app-comptes',
@@ -25,12 +29,28 @@ export class ComptesPage implements OnInit {
     private _formBuilder: FormBuilder,
     private utilService: UtilService,
     private loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private userService: UserService,
+    private storage: Storage,
+    private compteService: CompteService
 
-  ) { }
+  ) { 
+    this.storage.create();
+  }
+
+  solde: number;
 
   ngOnInit() {
     this.getMobilesMoney();
+
+    this.userService.solde.subscribe(
+      (solde: number)=>{
+        this.solde = solde;
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
 
 
     
@@ -80,6 +100,7 @@ export class ComptesPage implements OnInit {
   }
   
 
+  new_solde = 0 ;
   saveCompte(){
     console.log("hello");
     this.loadingController.create({
@@ -96,6 +117,31 @@ export class ComptesPage implements OnInit {
         console.log('response', response);
         this.modalOpened = false;
         this.showSuccess = true;
+        console.log("hello");
+        console.log(this.solde);
+        this.solde = this.solde + parseFloat(compte.montant);
+        // const new_solde = this.solde + parseFloat(compte.montant);
+        this.new_solde = this.solde;
+        
+
+        // this.userService.solde.subscribe(
+        //   (solde)=>{
+        //     console.log(solde);
+        //     if(compte.montant==null || compte.montant==""){
+        //       compte.montant = "0";
+        //     }
+        //     // console.log(parseFloat(compte.montant));
+        //     const new_solde = solde + parseFloat(compte.montant);
+        //     this.new_solde = this.new_solde + new_solde;
+        //     console.log(parseFloat(compte.montant));
+        //     console.log(new_solde);
+            
+        //     // this.userService.solde.next(new_solde);
+        //   },
+        //   (error)=>{
+        //     console.log(error);
+        //   }
+        // )
       })
       .catch((error) =>{
         console.log(error)
@@ -114,6 +160,33 @@ export class ComptesPage implements OnInit {
     .catch((error)=>{
       console.log(error)
     })
+
+    // setTimeout(() => {
+    //   this.userService.solde.next(this.new_solde);
+    // }, 3000);
+
+    // this.userService.solde.next(this.new_solde);
+
+  }
+
+
+  async terminer(){
+      this.storage.remove("solde");
+      this.storage.set('solde', this.new_solde);
+      this.userService.solde.next(this.new_solde);
+
+      const compte_id = await this.storage.get("compte_id");
+
+      // on modifit le solde de l'utilisateur
+      this.compteService.modifyCompteSolde(parseInt(compte_id), this.new_solde).subscribe(
+        (data)=>{
+          console.log(data);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+
   }
 
   

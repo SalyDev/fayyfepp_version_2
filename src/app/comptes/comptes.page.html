@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="content">
       <div class="page-title">Connexion de comptes</div>
-      <ion-button fill="clear" color="primary" [routerLink]="'/home'">Terminer</ion-button>
+      <ion-button fill="clear" (click)="terminer()" color="primary" [routerLink]="'/home'">Terminer</ion-button>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -46,9 +46,9 @@
         </ion-row>
       </ion-grid>
     </div>
-    <div class="w-100 align-center"> 
+    <!-- <div class="w-100 align-center"> 
       <div class="mt-8 my-btn orange" type="button" (click)="showSuccess=false" color="light">Ajouter</div>
-    </div>
+    </div> -->
   </div>
 
   <!-- Compte Link Modal-->

@@ -20,5 +20,16 @@ export class CompteService {
     return this.http.post<any>(environment.backUrl+"api/comptes", body);
   }
 
+  // modifier le solde d'un compte
+  modifyCompteSolde(id: number, solde: number)
+  {
+    const body = {
+      "solde": solde
+    }
+    
+    return this.http.put<any>(environment.backUrl+'api/comptes/'+id, body);
+  }
+
+
 
 }

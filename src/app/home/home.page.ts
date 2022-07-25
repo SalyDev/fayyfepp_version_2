@@ -100,6 +100,10 @@ export class HomePage implements OnInit {
     return AppUtils.getMoyenParCode(code);
   }
 
+  rechargeComptes(){
+    this.router.navigate(["/comptes"]);
+  }
+
   // doService(service): void{
   //   if(service.id === 'transfert') {
   //     this.router.navigateByUrl('transfert');

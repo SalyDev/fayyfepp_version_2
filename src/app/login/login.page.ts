@@ -26,22 +26,19 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.storage.create();
+    this.storage.clear();
   }
 
 
  registerUser() {
+
      console.log(this.registerUserData);
     this.auth.connexionUser(this.registerUserData)
       .subscribe(
         res => {
-          this.router.navigate(['home'] );
           console.log(res);
-          this.storage.clear();
-          this.storage.set('token', res.token);
-          this.storage.get('token').then((val) => {
-            console.log(val);
-            this.router.navigate(['home'] );
 
+          this.storage.set('token', res.token);
             // on récupère les infos du user par son tel
             this.userService.getUserInfosByTel(this.registerUserData.telephone).subscribe(
               (data: any)=>{
@@ -54,6 +51,9 @@ export class LoginPage implements OnInit {
                 this.storage.set('nom', data.nom);
                 this.storage.set('telephone', data.telephone);
 
+                this.router.navigate(['/home']);
+
+
 
 
 
@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
                 console.log(error)
               }
             )
-          });
+        
         },
         (error)=>{
           console.log(error);
@@ -71,14 +71,14 @@ export class LoginPage implements OnInit {
 
         }
       );
-      if (this.auth.loggedIn()){
-        this.router.navigate(['home'] );
-        // this.storage.get('token').then((val) => {
-        //   console.log(val);
+      // if (this.auth.loggedIn()){
+      //   this.router.navigate(['home'] );
+      //   // this.storage.get('token').then((val) => {
+      //   //   console.log(val);
 
-        // });
-      }
-      else {(this.router.navigate(['login'] ));};
+      //   // });
+      // }
+      // else {(this.router.navigate(['login'] ));};
   }
 
 }

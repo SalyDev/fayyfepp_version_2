@@ -25,7 +25,7 @@
       <ion-icon size="large" name="eye-off-outline"  *ngIf="soldeIsVisible" (click)="hideSolde()"></ion-icon>
     </div>
     <div class="float-left">
-      <ion-button color="primary" routerLink="/comptes">Recharger son compte</ion-button>
+      <ion-button color="primary" (click)="rechargeComptes()">Recharger son compte</ion-button>
     </div>
     <div class="ta-right">
       <ion-button fill="clear" color="dark" (click)="showSoldeDetails()">Voir les details</ion-button>

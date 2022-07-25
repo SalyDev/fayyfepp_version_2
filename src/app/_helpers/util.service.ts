@@ -26,6 +26,8 @@ export class UtilService {
     return new Promise((resolve, reject) => {
       // account.client = this.user.uid;
       // on doit ajouter les infos dans le compte_mobile_money du client
+      console.log(account);
+     
       console.log("add compte");
       console.log(account);
       this.comptes.push(account);
@@ -34,16 +36,7 @@ export class UtilService {
       // on ajoute le montant dans le compte mobile money du client
       // montant => account.montant
       // on récupère le solde actuel
-      this.userService.solde.subscribe(
-        (solde)=>{
-          console.log(parseFloat(account.montant));
-          let new_solde = solde + parseFloat(account.montant);
-          this.userService.solde.next(new_solde);
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
+     
       
       
       resolve(true);

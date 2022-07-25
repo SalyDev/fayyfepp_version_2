@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/internal/operators';
 import { ApiService } from './api.service';
+import { Storage } from '@ionic/storage-angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,12 +22,21 @@ export class AppComponent implements  OnInit {
   ];
 
   constructor(
-    private router:  Router
+    private router:  Router, private storage: Storage
 
   ) {
+    this.storage.create();
   }
 
-  ngOnInit(){
+  prenom: string;
+  nom: string;
+  telephone: string;
+  
+  async ngOnInit(){
+    this.prenom = await this.storage.get("prenom");
+    this.nom = await this.storage.get("nom");
+    this.telephone = await this.storage.get("telephone");
+
 
 
   }
