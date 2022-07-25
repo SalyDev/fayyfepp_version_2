@@ -13,10 +13,10 @@
       </div>
     </div>
     <!-- add new button-->
-    <div class="align-row-start-center" (click)="addContact()">
+    <!-- <div class="align-row-start-center" (click)="addContact()">
       <ion-icon  size="large" color="primary" name="add-circle"></ion-icon>
       <div  class="ml-4 fs-14">Envoyer vers un nouveau numéro</div>
-    </div>
+    </div> -->
     <!--filtered contacts-->
     <ion-list *ngIf="contactListFiltered && contactListFiltered.length > 0" class="pt-12">
       <ion-item *ngFor="let fav of contactListFiltered" (click)="selectContact(fav)" class="align-row-start-center">
@@ -54,9 +54,9 @@
       <ion-content>
         <div class="content">
           <div class="header">
-            <img [src]="selectedMoyen.logo"/>
+            <img />
           </div>
-          <form [formGroup]="compteForm">
+          <form >
             <div class="mon-input">
               <ion-label position="stacked">Nom Complet</ion-label>
               <div class="input">
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="w-100 align-center">
-              <div class="mt-8 my-btn blue" type="button" (click)="saveCompte()" color="light">
+              <div class="mt-8 my-btn blue" type="button"routerLink="/home/transfert/moyen" color="light">
                 Valider
               </div>
             </div>

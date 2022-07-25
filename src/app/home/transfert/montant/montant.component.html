@@ -17,7 +17,7 @@
       <div class="mon-input no-icon">
         <ion-label color="primary" position="stacked">Montant Envoyé</ion-label>
         <div class="input">
-          <ion-input [formControl]="montantEnvoyeControl" name="montantEnvoye" type="number"></ion-input>
+          <ion-input type="number"></ion-input>
         </div>
       </div>
       <ion-label class="mb-24" color="danger" *ngIf="erreur">{{erreur}}</ion-label>
@@ -25,7 +25,7 @@
       <div class="mon-input no-icon mt-12">
         <ion-label color="primary" position="stacked">Montant Reçu</ion-label>
         <div class="input">
-          <ion-input [formControl]="montantRecuControl" name="montantRecu" type="number"></ion-input>
+          <ion-input  type="number"></ion-input>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
     </div>
 
     <div class="actions align-row-center-center">
-      <ion-button class="w-100 " [disabled]="!isValid" color="primary" (click)="doTransfert()">Envoyer</ion-button>
+      <ion-button class="w-100 "  color="primary" (click)="doTransfert()">Envoyer</ion-button>
       <!-- <div class="mt-12 my-btn blue " color="light"> Envoyer </div> -->
     </div>
   </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserService } from './user.service';
 
 
 @Injectable({
@@ -12,7 +13,8 @@ export class UtilService {
   onComptesChanged: BehaviorSubject<any> = new BehaviorSubject("");
 
 
-  constructor(private http: HttpClient, private toastController: ToastController) { }
+
+  constructor(private http: HttpClient, private toastController: ToastController, private userService: UserService) { }
 
   getMobileMoneys() {
     return this.http.get<any>(environment.backUrl + "api/type_mobile_moneys");
@@ -20,7 +22,7 @@ export class UtilService {
 
   comptes: any[] = [];
 
-  public addCompte(account): Promise<any> {
+  public addCompte(account: any): Promise<any> {
     return new Promise((resolve, reject) => {
       // account.client = this.user.uid;
       // on doit ajouter les infos dans le compte_mobile_money du client
@@ -29,7 +31,21 @@ export class UtilService {
       this.comptes.push(account);
       this.onComptesChanged.next(this.comptes);
 
-      // 
+      // on ajoute le montant dans le compte mobile money du client
+      // montant => account.montant
+      // on récupère le solde actuel
+      this.userService.solde.subscribe(
+        (solde)=>{
+          console.log(parseFloat(account.montant));
+          let new_solde = solde + parseFloat(account.montant);
+          this.userService.solde.next(new_solde);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+      
+      
       resolve(true);
     
     });

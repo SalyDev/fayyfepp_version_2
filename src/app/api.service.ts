@@ -61,5 +61,23 @@ export class ApiService {
     this.onUserChanged.next(null);
     this.router.navigate(['login']);
   }
+  public doTransfert(transfert): Promise<any>{
+    return new Promise((resolve, reject) => {
+      transfert.client = this.user.uid;
+      //resolve(true);
+      this.httpClient.post(environment.backUrl + 'transferts/', transfert)
+        .subscribe((response: any) => {
+          if (response) {
+            resolve(response);
+          }
+          else{
+            reject(null);
+          }
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
 
 }

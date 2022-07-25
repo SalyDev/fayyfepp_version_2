@@ -21,7 +21,9 @@ export class MontantComponent implements OnInit {
   solde = 0;
 
   contact: any;
-  moyen: any;
+  moyen: any = {name:'OrangeMoney'};
+  mobile: any;
+
 
   montantEnvoyeControl: FormControl;
   montantRecuControl: FormControl;
@@ -66,5 +68,69 @@ ngOnInit(): void {
       this.router.navigateByUrl('/home');
     }, 300);
   }
+  doTransfert(): void{
 
-}
+      this.loadingController.create({
+        cssClass:'loading-panel',
+        message:'envoie...'
+      }).then();
+
+
+  //     this.loadingController.create({
+  //       cssClass:'loading-panel',
+  //       message:'envoie...'
+  //     })
+  //     .then((loading)=>{
+  //        loading.present();
+  //        const dispatching = [];
+  //        this.dispatching.forEach(element => {
+  //          dispatching.push({
+  //            moyen: element.compte.moyen,
+  //            compte: element.compte.id,
+  //            solde: element.compte.solde,
+  //            montant: element.part,
+  //            frais: element.frais
+  //          });
+  //        });
+  //        if(this.interoperable === false){
+  //         dispatching.push({
+  //           moyen: this.moyen.id,
+  //           compte: this.principalCompte.id,
+  //           solde: this.principalCompte.solde,
+  //           montant: this.montantEnvoyeControl.value,
+  //           frais: this.frais
+  //         });
+  //        }
+  //        const transfert = {
+  //          destinataire: this.contact.numero,
+  //          moyen: this.moyen.id,
+  //          montant: this.montantEnvoyeControl.value,
+  //          frais: this.frais,
+  //          fraisPercent: this.interoperable === true? this.fraisPercent: this.moyen.frais,
+  //          dispatching,
+  //        };
+  //       console.log('transfert',transfert);
+  //       this.apiService.doTransfert(transfert)
+  //         .then((response) => {
+  //           loading.dismiss();
+  //           console.log('response', response);
+  //           this.showSuccess = true;
+  //           this.transfert = response;
+  //         })
+  //         .catch((error) =>{
+  //           console.log('errror', error);
+  //           loading.dismiss();
+  //           this.alertController.create({
+  //             cssClass: 'my-custom-class',
+  //             header: 'Alerte',
+  //             message: 'Impossible de faire le transfert',
+  //             buttons: ['OK']
+  //           })
+  //           .then((alert) =>{
+  //             alert.present();
+  //           });
+  //         });
+  //     });
+  // }
+
+}}

@@ -77,6 +77,7 @@ export class ContactComponent implements OnInit {
 
   // Private
   private unsubscribeAll: Subject<any>;
+  private _formBuilder: any;
 
   constructor(
     private router: Router,
@@ -138,15 +139,15 @@ export class ContactComponent implements OnInit {
 
   addContact() {
     this.modalOpened = true;
-    // this.selectedMoyen = moyen;
-    //if(this.selectedMoyen.type === 'mobile'){
-      // this.compteForm = this._formBuilder.group({
-      //   numero: ['', Validators.required],
-      //   code: ['', Validators.required],
-      //   moyen: [moyen.name, Validators.required],
-      // });
-      // console.log('compteForm', this.compteForm);
-   // }
+  //   this.selectedMoyen = moyen;
+  //   if(this.selectedMoyen.type === 'mobile'){
+  //     this.compteForm = this._formBuilder.group({
+  //       numero: ['', Validators.required],
+  //       code: ['', Validators.required],
+  //       moyen: [moyen.name, Validators.required],
+  //     });
+  //     console.log('compteForm', this.compteForm);
+  //  }
   }
 }
 

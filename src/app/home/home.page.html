@@ -12,11 +12,11 @@
 <ion-content [fullscreen]="true">
   <div class="home">
     <!-- solde-->
-    <div class="solde-container">
+    <div class="solde-container mb-5">
       <div class="text">
         <div class="title">Mon solde disponible</div>
         <div class="value"> 
-          <span *ngIf="soldeIsVisible">{{solde | number}}</span> 
+          <span *ngIf="soldeIsVisible">{{solde | async}}</span> 
           <span *ngIf="!soldeIsVisible"> ******* </span> 
           <span class="devise">F CFA</span>
         </div>
@@ -25,14 +25,14 @@
       <ion-icon size="large" name="eye-off-outline"  *ngIf="soldeIsVisible" (click)="hideSolde()"></ion-icon>
     </div>
     <div class="float-left">
-      <ion-button class="btn btn-primary" routerLink="/comptes">Recharger son compte</ion-button>
+      <ion-button color="primary" routerLink="/comptes">Recharger son compte</ion-button>
     </div>
     <div class="ta-right">
       <ion-button fill="clear" color="dark" (click)="showSoldeDetails()">Voir les details</ion-button>
     </div>
 
     <!--paiement tools-->
-    <div class="paytools" *ngIf="!user">
+    <div class="paytools mt-2" *ngIf="!user">
       <div class="align-row-space-between-center">
         <!--qrcode-->
       
@@ -49,10 +49,10 @@
           </div>
         </div>
       </div>
-      <div class="align-row-start-center pl-32">
+      <!-- <div class="align-row-start-center pl-32">
         <ion-icon name="camera" ></ion-icon>
         <div class="ml-8">Scanner</div>
-      </div>
+      </div> -->
     </div>
 
     <!-- home menu-->

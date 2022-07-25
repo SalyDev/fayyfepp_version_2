@@ -20,7 +20,8 @@ export class TokenInterceptorService  {
 
   private isValidRequestForInterceptor(requestGiven: HttpRequest<any>): boolean {
     if(requestGiven.url.includes('termii') || ((requestGiven.url.includes('users') ||
-     requestGiven.url.includes('comptes')) && requestGiven.method=='POST') ){
+     // eslint-disable-next-line eqeqeq
+     requestGiven.url.includes('comptes')) && requestGiven.method =='POST') ){
       console.log('intercept ignore');
         return false;
     }
