@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/internal/operators';
 import { ApiService } from './api.service';
+import { Storage } from '@ionic/storage-angular';
+import { AuthService } from './authservice.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,9 +20,13 @@ export class AppComponent implements  OnInit {
     { title: 'Automatisations', url: '/folder/Favorites', icon: 'git-network-outline' },
     { title: 'Rappels', url: '/folder/Archived', icon: 'archive' },
   ];
+  registerUserData = {
+    telephone: '',
+    password: ''
+  };
 
   constructor(
-    private router:  Router
+    private router:  Router, private storage: Storage,private auth: AuthService
 
   ) {
   }
@@ -31,10 +37,33 @@ export class AppComponent implements  OnInit {
   }
 // eslint-disable-next-line @typescript-eslint/naming-convention
 LogOut(){
-  localStorage.removeItem('token');
 
+  this.storage.set('token', '');
   this.router.navigate(['login']);
 
-}
 
 }
+registerUser() {
+  console.log(this.registerUserData);
+      this.auth.connexionUser(this.registerUserData)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.storage.set('token', res.token);
+            this.storage.get('token').then((val) => {
+              console.log(val);
+            });
+          },
+          (error)=>{
+            console.log(error);
+          }
+        );
+        if (this.auth.loggedIn()){
+          this.router.navigate(['home'] );
+        }
+        else {(this.router.navigate(['login'] ));};
+    }
+
+}
+
+

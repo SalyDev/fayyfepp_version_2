@@ -7,7 +7,9 @@ import { AuthService } from './authservice.service';
 })
 export class AuthGuard implements CanActivate {
 token='';
-  constructor(private auth: AuthService, private router: Router,private storage: Storage){}
+  constructor(private auth: AuthService, private router: Router,private storage: Storage){
+    this.storage.create();
+  }
   canActivate(): boolean{
     if (this.auth.loggedIn()){
       return true;
@@ -21,4 +23,5 @@ token='';
       return (!!this.token);
 });
   }
+
 }

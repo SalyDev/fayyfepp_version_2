@@ -1,0 +1,57 @@
+{
+    "mobilemoney" : [ {
+        "id": 1,
+        "nom": "Orange Money",
+        "logo" : "assets/images/Orange-Money.png"
+      }, 
+      {
+        "id": 2,
+        "nom" : "Wave",
+        "logo" : "assets/images/mobile-money/wave.png"
+      },
+      {
+        "id": 3,
+        "nom" : "Free Money",
+        "logo" : "assets/images/mobile-money/free-money.png"
+      },
+      {
+        "id": 4,
+        "nom" : "Wizall",
+        "logo" : "assets/images/mobile-money/wizall.png"
+      },
+      {
+        "id": 5,
+        "nom" : "Yup",
+        "logo" : "assets/images/mobile-money/logo_yup_fond_blanc_.png"
+      },
+      {
+        "id": 6,
+        "nom" : "E-money",
+        "logo" : "assets/images/mobile-money/e-moneys.png"
+      },
+      {
+        "id": 7,
+        "nom" : "Promoxio",
+        "logo" : "assets/images/mobile-money/proximo3.png"
+      },
+      {
+        "id": 8,
+        "nom" : "MTN",
+        "logo" : "assets/images/mobile-money/mtn.png"
+      }
+
+
+    ],
+    "banks" : [ 
+        {
+        "id": 1,
+        "nom" : "Ecobank",
+        "logo" : "assets/images/mobile-money/Ecobank_Logo_EN.png"
+      },
+      {
+        "id": 1,
+        "nom" : "Orabank",
+        "logo" : "assets/images/mobile-money/orabank.png.png"
+      }
+    ]
+  }

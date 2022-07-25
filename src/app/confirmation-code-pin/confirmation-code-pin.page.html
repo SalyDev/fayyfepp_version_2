@@ -1,0 +1,82 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>code-pin</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content> 
+  <div class="logo">
+    <img src='assets/images/logo.png'>
+  </div>
+  <div class="login-section ion-padding">
+    <div class="heading ion-padding">
+      <h1>Code Pin</h1>
+      <p>Confirmer votre vote code PIN</p>
+    </div>
+
+    <form *ngIf="pinForm" [formGroup]="pinForm" (ngSubmit)="onSubmit()" class="login-form ion-padding">
+      <div class="form-input">
+        <ion-item lines="none">
+          <!-- <ion-label position="floating">
+          <ion-icon name="call-outline"></ion-icon>
+        </ion-label> -->
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c1"
+            [ngStyle]="{'border-bottom': pinForm.controls['c1'].invalid  ? '2px solid red' : ''}"
+          />
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c2"
+            [ngStyle]="{'border-bottom': pinForm.controls['c2'].invalid  ? '2px solid red' : ''}"
+          />
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c3"
+            [ngStyle]="{'border-bottom': pinForm.controls['c3'].invalid  ? '2px solid red' : ''}"
+          />
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c4"
+            [ngStyle]="{'border-bottom': pinForm.controls['c4'].invalid  ? '2px solid red' : ''}"
+          />
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded mr-2"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c5"
+            [ngStyle]="{'border-bottom': pinForm.controls['c5'].invalid  ? '2px solid red' : ''}"
+          />
+          <input
+            class="shadow-custom-1 w-small text-center form-control rounded"
+            type="text"
+            id="first"
+            maxlength="1"
+            formControlName="c6"
+            [ngStyle]="{'border-bottom': pinForm.controls['c6'].invalid  ? '2px solid red' : ''}"
+          />
+        </ion-item>
+        
+      </div>
+
+    <div class="action-button ion-padding">
+      <ion-button type="submit" size="large" [disabled]="!pinForm.valid" class="login-button ion-margin-vertical">Valider</ion-button>
+      <!-- <ion-button size="large" class="signup-button">Créer un nouveau compte</ion-button> -->
+    </div>
+  </form>
+
+  </div>
+</ion-content>

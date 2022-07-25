@@ -50,15 +50,27 @@ export class ContactComponent implements OnInit {
   //historique des contacts envoyés / favoris
   favoris: any[] = [
     {
-      nom: 'maman',
+      nom: 'Mon mari',
       numero: '772184516'
     },
     {
-      nom: 'Yaya',
+      nom: 'saly',
       numero: '777402531'
     },
     {
-      nom: 'Alioune Badara',
+      nom: 'Maman',
+      numero: '762375137'
+    },
+    {
+      nom: 'Jordan',
+      numero: '762375137'
+    },
+    {
+      nom: 'Fatou',
+      numero: '762375137'
+    },
+    {
+      nom: 'ousseynou',
       numero: '762375137'
     }
   ];

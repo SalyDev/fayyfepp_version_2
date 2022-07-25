@@ -2,8 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
-  production: false ,
-  url: 'http://127.0.0.1:8000/'
+  production: false,
+  mockUrl: 'http://localhost:3000/',
+  backUrl: 'http://127.0.0.1:8000/',
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  termii_api_key: 'TLAQiPOeBnzSRbPUl7nleg77GdDBKF1pYLzbbmAk8tV9GAfwE09mLKEvmaYagl',
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  termii_channel_id: 'Fayy Fepp',
+
 };
 /*
  * For easier debugging in development mode, you can import the following file

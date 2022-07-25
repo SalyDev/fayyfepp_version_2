@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
     telephone: '',
     password: ''
   };
+  ngForm: any;
 
 
   constructor(private formBuilder: FormBuilder,private router: Router,private auth: AuthService, private storage: Storage
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 

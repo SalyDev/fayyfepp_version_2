@@ -24,6 +24,9 @@
       <ion-icon size="large" name="eye-outline" *ngIf="!soldeIsVisible" (click)="showSolde()"></ion-icon>
       <ion-icon size="large" name="eye-off-outline"  *ngIf="soldeIsVisible" (click)="hideSolde()"></ion-icon>
     </div>
+    <div class="float-left">
+      <ion-button class="btn btn-primary" routerLink="/comptes">Recharger son compte</ion-button>
+    </div>
     <div class="ta-right">
       <ion-button fill="clear" color="dark" (click)="showSoldeDetails()">Voir les details</ion-button>
     </div>
@@ -57,8 +60,8 @@
       <ion-grid >
         <ion-row>
           <ion-col size="4" *ngFor="let item of items" >
-            <div class="item align-column-start-center" [routerLink]="item.pageUrl">
-             <div class="logo"><img [src]="item.logo" /></div> 
+            <div class="item d-flex flex-column justify-content-center align-items-center" [routerLink]="item.pageUrl">
+             <div class="logo"><img [src]="item.logo" alt="" /></div> 
              <div class="label">{{item.libelle}}</div>
             </div>
           </ion-col>
