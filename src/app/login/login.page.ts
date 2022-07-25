@@ -24,19 +24,21 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.storage.create();
   }
 
 
  registerUser() {
-console.log(this.registerUserData);
+     console.log(this.registerUserData);
     this.auth.connexionUser(this.registerUserData)
       .subscribe(
         res => {
+          this.router.navigate(['home'] );
           console.log(res);
           this.storage.set('token', res.token);
           this.storage.get('token').then((val) => {
             console.log(val);
+
           });
         },
         (error)=>{

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CompteService } from '../_helpers/compte.service';
 import { UserService } from '../_helpers/user.service';
 import { UtilService } from '../_helpers/util.service';
 
@@ -15,11 +16,14 @@ export class ConfirmationCodePinPage implements OnInit {
   subTitle: string;
   telephone: string;
   pin: string;
+  prenom: string;
+  nom: string;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private utilService: UtilService,
-    private userService: UserService
+    private userService: UserService,
+    private compteService: CompteService
     ) { 
       if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.telephone){
         //
@@ -30,6 +34,14 @@ export class ConfirmationCodePinPage implements OnInit {
         //
         this.pin = this.router.getCurrentNavigation().extras.state.pin;
         console.log(this.router.getCurrentNavigation().extras.state.pin);
+      }
+      if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.prenom){
+        //
+        this.prenom = this.router.getCurrentNavigation().extras.state.prenom;
+      }
+      if(this.router.getCurrentNavigation().extras.state && this.router.getCurrentNavigation().extras.state.nom){
+        //
+        this.nom = this.router.getCurrentNavigation().extras.state.nom;
       }
       // if(this.router.getCurrentNavigation().extras.state.subTitle){
       //   //
@@ -64,15 +76,25 @@ export class ConfirmationCodePinPage implements OnInit {
         this.utilService.showSuccessToast("bottom","Code PIN confirmé")
   
         // on redirige l'utilisateur vers l'accueil ( ou la connexion)
-        this.router.navigate(['/home'], { state: { telephone : this.telephone } });
-  
-        console.log(this.telephone);
+        // this.router.navigate(['/home'], { state: { telephone : this.telephone, nom : this.nom,  prenom : this.prenom} });
+        
+        this.router.navigate(['/login'])
+        // console.log(this.telephone);
         console.log(confirmPin);
+        console.log(this.telephone);
+        console.log(this.prenom);
+        console.log(this.nom);
         // return;
         // on enregistre l'utilisateur dans la base de données
-        this.userService.createUser(this.telephone, confirmPin).subscribe(
-          (data)=>{
+        this.userService.createUser(this.telephone, confirmPin, this.prenom, this.nom).subscribe(
+          (data: any)=>{
             console.log(data)
+            // on creer un wallet fayyfepp avec 0Fcfa pour cet user
+            this.compteService.createCompte(data.id).subscribe(
+              (data)=>console.log(data),
+              (error)=>console.log(error)
+            )
+
           },
           (error)=>{console.log(error)}
         )

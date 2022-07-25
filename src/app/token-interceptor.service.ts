@@ -12,28 +12,29 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenInterceptorService {
+export class TokenInterceptorService  {
 
-  constructor(private storage: Storage, private router: Router) {
+  constructor(private storage: Storage,private router: Router) {
     this.storage.create();
   }
 
-  private isValidRequestForInterceptor(requestUrl: string): boolean {
-    if (requestUrl.includes('termii')) {
+  private isValidRequestForInterceptor(requestGiven: HttpRequest<any>): boolean {
+    if(requestGiven.url.includes('termii') || ((requestGiven.url.includes('users') ||
+     requestGiven.url.includes('comptes')) && requestGiven.method=='POST') ){
       console.log('intercept ignore');
-      return false;
+        return false;
     }
     return true;
-  }
+}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.isValidRequestForInterceptor(request.url)) {
-      return from(this.storage.get('token'))
-        .pipe(
-          switchMap(token => {
-            if (token !== null) {
-              request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
+  if (this.isValidRequestForInterceptor(request)) {
+    return from(this.storage.get('token'))
+    .pipe(
+        switchMap(token => {
+            if (token !==null) {
+                request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
             }
             else { (this.router.navigate(['login'])); }
 
@@ -46,13 +47,13 @@ export class TokenInterceptorService {
               }),
               catchError((error: HttpErrorResponse) => throwError(error))
             );
-          })
-        );
-    }
-
-    return next.handle(request);
-
-
+        })
+    );
   }
+
+  return next.handle(request);
+
+
+}
 
 }
